@@ -17,7 +17,7 @@ export async function getTrendingMedia(pageNamber) {
       },
     }
   );
-  console.log(data.results);
+
   return data.results;
 }
 
