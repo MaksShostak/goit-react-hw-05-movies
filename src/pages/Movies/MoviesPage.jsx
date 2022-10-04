@@ -4,12 +4,13 @@ import SearchMovies from 'components/SearchMovies/SearchMovies';
 import Spiner from 'components/Spiner/Spiner';
 import { getSearchMovies } from 'services/ApiRequests';
 import { useLocation, useSearchParams } from 'react-router-dom';
+import MovieList from 'components/MovieList/MovieList';
 
 import {
   Container,
-  MoviesList,
-  MovieItem,
-  MovieLink,
+  // MoviesList,
+  // MovieItem,
+  // MovieLink,
 } from './MoviesPage.styled';
 
 // import PropTypes from 'prop-types';
@@ -68,16 +69,17 @@ const Movies = () => {
         <p>Something went wrong, please reload the page and try again</p>
       )}
       {searchMovie?.length ? (
-        <MoviesList>
-          {searchMovie?.map(movie => (
-            <MovieItem key={movie.id}>
-              <MovieLink to={`${movie.id}`} state={{ from: location }}>
-                {movie.title || movie.name}
-              </MovieLink>
-            </MovieItem>
-          ))}
-        </MoviesList>
-      ) : notFaund ? (
+        <MovieList movies={searchMovie} path={location} />
+      ) : // <MoviesList>
+      //   {searchMovie?.map(movie => (
+      //     <MovieItem key={movie.id}>
+      //       <MovieLink to={`${movie.id}`} state={{ from: location }}>
+      //         {movie.title || movie.name}
+      //       </MovieLink>
+      //     </MovieItem>
+      //   ))}
+      // </MoviesList>
+      notFaund ? (
         <p
           style={{
             textAlign: 'center',

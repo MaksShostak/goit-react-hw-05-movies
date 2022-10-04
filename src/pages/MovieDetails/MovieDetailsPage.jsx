@@ -1,15 +1,15 @@
 import { useState, useEffect, Suspense } from 'react';
-import { IoArrowBackSharp } from 'react-icons/io5';
+// import { IoArrowBackSharp } from 'react-icons/io5';
 import Spiner from 'components/Spiner/Spiner';
-
+import ButtonGoBack from 'components/Button/ButtonGoBack';
 // import PropTypes from 'prop-types';
 import { Outlet, useLocation, useParams } from 'react-router-dom';
 import { getAllInfoMovies } from 'services/ApiRequests';
 
 import {
   Container,
-  Button,
-  ButtonLink,
+  // Button,
+  // ButtonLink,
   Tittle,
   ContainerMovie,
   MovieItem,
@@ -24,7 +24,7 @@ const MovieDetails = () => {
 
   const { movieId } = useParams();
   const location = useLocation();
-  console.log(location);
+  // console.log(location);
 
   useEffect(() => {
     if (movieId) {
@@ -69,11 +69,12 @@ const MovieDetails = () => {
       {error && (
         <p>Something went wrong, please reload the page and try again</p>
       )}
-      <ButtonLink to={location.state?.from ?? `/movies`}>
+      <ButtonGoBack location={location} />
+      {/* <ButtonLink to={location.state?.from ?? `/movies`}>
         <Button type="button">
           <IoArrowBackSharp /> Go back
         </Button>
-      </ButtonLink>
+      </ButtonLink> */}
       {selectMovie && (
         <ContainerMovie>
           <img src={imageUrl} alt={`${title || name} movie poster `} />
