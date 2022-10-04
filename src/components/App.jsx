@@ -8,21 +8,21 @@ import { Routes, Route } from 'react-router-dom';
 // import NotFound from 'pages/NotFound/NotFound';
 import SharedLayout from './SharedLayout/SharedLayout';
 
-const Home = lazy(() => import('pages/Home/Home'));
-const Movies = lazy(() => import('pages/Movies/Movies'));
+const Home = lazy(() => import('pages/Home/HomePage'));
+const Movies = lazy(() => import('pages/Movies/MoviesPage'));
 const Cast = lazy(() => import('./Cast/Cast'));
 const Reviews = lazy(() => import('./Reviews/Reviews'));
-const MovieDetails = lazy(() => import('pages/MovieDetails/MovieDetails'));
+const MovieDetails = lazy(() => import('pages/MovieDetails/MovieDetailsPage'));
 
 export const App = () => {
   return (
     <div
       style={{
         // height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
+        // display: 'flex',
+        // justifyContent: 'center',
         alignItems: 'center',
-        fontSize: 40,
+        fontSize: 20,
         color: '#010101',
       }}
     >

@@ -3,11 +3,18 @@ import { useState, useEffect } from 'react';
 import SearchMovies from 'components/SearchMovies/SearchMovies';
 import Spiner from 'components/Spiner/Spiner';
 import { getSearchMovies } from 'services/ApiRequests';
-import { Link, useLocation, useSearchParams } from 'react-router-dom';
+import { useLocation, useSearchParams } from 'react-router-dom';
+
+import {
+  Container,
+  MoviesList,
+  MovieItem,
+  MovieLink,
+} from './MoviesPage.styled';
 
 // import PropTypes from 'prop-types';
 
-const Movies = props => {
+const Movies = () => {
   const [searchMovie, setSearchMovie] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -54,22 +61,22 @@ const Movies = props => {
   }
 
   return (
-    <div>
+    <Container>
       <SearchMovies loading={loading} onSubmit={handleSubmit} />
       {loading && <Spiner />}
       {error && (
         <p>Something went wrong, please reload the page and try again</p>
       )}
       {searchMovie?.length ? (
-        <ul>
+        <MoviesList>
           {searchMovie?.map(movie => (
-            <li key={movie.id}>
-              <Link to={`${movie.id}`} state={{ from: location }}>
+            <MovieItem key={movie.id}>
+              <MovieLink to={`${movie.id}`} state={{ from: location }}>
                 {movie.title || movie.name}
-              </Link>
-            </li>
+              </MovieLink>
+            </MovieItem>
           ))}
-        </ul>
+        </MoviesList>
       ) : notFaund ? (
         <p
           style={{
@@ -82,7 +89,7 @@ const Movies = props => {
           another search term
         </p>
       ) : null}
-    </div>
+    </Container>
   );
 };
 

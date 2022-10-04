@@ -1,15 +1,18 @@
-import { Outlet, NavLink } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import { Suspense } from 'react';
 import Spiner from 'components/Spiner/Spiner';
+
+import { Header, Navigate, Navlink } from './SharedLayout.styled';
+
 const SharedLayout = () => {
   return (
     <div>
-      <header>
-        <nav>
-          <NavLink to="/">Home</NavLink>
-          <NavLink to="/movies">Movies</NavLink>
-        </nav>
-      </header>
+      <Header>
+        <Navigate>
+          <Navlink to="/home">Home</Navlink>
+          <Navlink to="/movies">Movies</Navlink>
+        </Navigate>
+      </Header>
       <Suspense fallback={<Spiner />}>
         <Outlet />
       </Suspense>

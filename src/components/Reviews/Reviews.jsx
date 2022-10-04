@@ -3,8 +3,9 @@ import Spiner from 'components/Spiner/Spiner';
 import { getMoviesReview } from 'services/ApiRequests';
 import { useParams } from 'react-router-dom';
 // import PropTypes from 'prop-types';
+import { Container, Tittle, List, Item, CastInfo, Span } from './Review.styled';
 
-const Reviews = props => {
+const Reviews = () => {
   const [reviews, setReviews] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -31,33 +32,34 @@ const Reviews = props => {
     return null;
   }
   return (
-    <div>
-      <h2>Reviews</h2>
+    <Container>
+      <Tittle>Reviews</Tittle>
       {loading && <Spiner />}
       {error && (
         <p>Something went wrong, please reload the page and try again</p>
       )}
       {reviews?.length ? (
-        <div>
-          <ul>
-            {reviews &&
-              reviews?.map(rev => (
-                <li key={rev.id}>
-                  <p> Aurhor: {rev.author.toUpperCase()}</p>
-                  <p>Review:</p>
-                  <p> {rev.content}</p>
-                  <p>
-                    Date of raview:{' '}
-                    {new Date(rev.created_at).toLocaleDateString()}
-                  </p>
-                </li>
-              ))}
-          </ul>
-        </div>
+        <List>
+          {reviews &&
+            reviews?.map(rev => (
+              <Item key={rev.id}>
+                <CastInfo>Aurhor: {rev.author.toUpperCase()}</CastInfo>
+                <CastInfo>
+                  {' '}
+                  <Span>Review:</Span>
+                  {rev.content}
+                </CastInfo>
+                <CastInfo>
+                  Date of raview:{' '}
+                  {new Date(rev.created_at).toLocaleDateString()}
+                </CastInfo>
+              </Item>
+            ))}
+        </List>
       ) : (
         <p>We don't have any reviws for this movie</p>
       )}
-    </div>
+    </Container>
   );
 };
 

@@ -1,7 +1,7 @@
-// import { toast } from 'react-toastify';
 import { useState } from 'react';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-// import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
+import { Tittle, Container, Input, Form, Button } from './SearchMovies.styled';
 
 const SearchMovies = ({ onSubmit, loading }) => {
   const [movieRequest, setMovieRequest] = useState('');
@@ -23,20 +23,17 @@ const SearchMovies = ({ onSubmit, loading }) => {
         width: '500px',
         clickToClose: true,
       });
-      //   return toast.info(`Please enter a search query`, {
-      //     position: toast.POSITION.BOTTOM_CENTER,
-      //   });
     }
     onSubmit(movieRequest.toLowerCase());
     resetInput();
   };
 
   return (
-    <div>
-      <h1>Search Films</h1>
-      <form onSubmit={handleSubmit}>
+    <Container>
+      <Tittle>Search Films</Tittle>
+      <Form onSubmit={handleSubmit}>
         <label htmlFor="">
-          <input
+          <Input
             type="text"
             placeholder="movie request"
             name="movieRequest"
@@ -44,14 +41,17 @@ const SearchMovies = ({ onSubmit, loading }) => {
             onChange={handleAddQuery}
           />
         </label>
-        <button type="submit" disabled={loading}>
+        <Button type="submit" disabled={loading}>
           Search
-        </button>
-      </form>
-    </div>
+        </Button>
+      </Form>
+    </Container>
   );
 };
 
-// SearchFilms.propTypes = {}
+SearchMovies.propTypes = {
+  loading: PropTypes.bool.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+};
 
 export default SearchMovies;

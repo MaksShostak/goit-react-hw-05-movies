@@ -1,10 +1,18 @@
 import { useEffect, useState } from 'react';
 // import PropTypes from 'prop-types';
 import { getTrendingMedia } from 'services/ApiRequests';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import Spiner from 'components/Spiner/Spiner';
 
-const Home = props => {
+import {
+  HomeContainer,
+  Tittle,
+  MoviesList,
+  MovieItem,
+  MovieLink,
+} from './HomePage.styled';
+
+const Home = () => {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -28,24 +36,29 @@ const Home = props => {
   }, []);
 
   return (
-    <div>
-      <h1>Trending this week</h1>
+    <HomeContainer>
+      <Tittle>Trending this week</Tittle>
       {loading && <Spiner />}
       {movies.length > 0 && (
-        <ul>
+        <MoviesList>
           {movies.map(movie => (
-            <li key={movie.id}>
-              <Link to={`/movies/${movie.id}`} state={{ from: location }}>
+            <MovieItem key={movie.id}>
+              <MovieLink
+                to={`${location.pathname === '/home' ? '/movies/' : ''}${
+                  movie.id
+                }`}
+                state={{ from: location }}
+              >
                 {movie.title || movie.name}{' '}
-              </Link>
-            </li>
+              </MovieLink>
+            </MovieItem>
           ))}
-        </ul>
+        </MoviesList>
       )}
       {error && (
         <p>Something went wrong, please reload the page and try again</p>
       )}
-    </div>
+    </HomeContainer>
   );
 };
 
