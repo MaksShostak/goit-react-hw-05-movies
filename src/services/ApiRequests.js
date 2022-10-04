@@ -10,7 +10,7 @@ const timeWindow = { day: 'day', week: 'week' };
 
 export async function getTrendingMedia(pageNamber) {
   const { data } = await axios.get(
-    `trending/${mediaType.all}/${timeWindow.week}`,
+    `trending/${mediaType.movie}/${timeWindow.week}`,
     {
       params: {
         page: pageNamber,
@@ -27,7 +27,7 @@ export async function getSearchMovies(searchParam) {
       query: searchParam,
     },
   });
-  console.log(data);
+  // console.log(data);
   return data.results;
 }
 
@@ -37,8 +37,8 @@ export async function getAllInfoMovies(movieId) {
       movie_id: movieId,
     },
   });
-  console.log(data);
-  return data.results;
+  // console.log(data);
+  return data;
 }
 
 export async function getMoviesActorsCast(movieId) {
@@ -47,8 +47,8 @@ export async function getMoviesActorsCast(movieId) {
       movie_id: movieId,
     },
   });
-  console.log(data);
-  return data.results;
+  // console.log(data.cast);
+  return data.cast;
 }
 
 export async function getMoviesReview(movieId) {
@@ -57,6 +57,16 @@ export async function getMoviesReview(movieId) {
       movie_id: movieId,
     },
   });
-  console.log(data);
+  // console.log(data.results);
   return data.results;
 }
+
+export const useApi = () => {
+  return {
+    getTrendingMedia,
+    getSearchMovies,
+    getAllInfoMovies,
+    getMoviesActorsCast,
+    getMoviesReview,
+  };
+};

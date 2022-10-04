@@ -1,4 +1,6 @@
 import { Outlet, NavLink } from 'react-router-dom';
+import { Suspense } from 'react';
+import Spiner from 'components/Spiner/Spiner';
 const SharedLayout = () => {
   return (
     <div>
@@ -8,7 +10,9 @@ const SharedLayout = () => {
           <NavLink to="/movies">Movies</NavLink>
         </nav>
       </header>
-      <Outlet />
+      <Suspense fallback={<Spiner />}>
+        <Outlet />
+      </Suspense>
     </div>
   );
 };

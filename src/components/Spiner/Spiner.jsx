@@ -1,7 +1,7 @@
 import { RotatingLines } from 'react-loader-spinner';
 // import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 
-export const Spiner = () => {
+const Spiner = () => {
   return (
     <div style={{ display: 'flex', justifyContent: 'center', margin: '30px' }}>
       <RotatingLines
@@ -14,3 +14,4 @@ export const Spiner = () => {
     </div>
   );
 };
+export default Spiner;

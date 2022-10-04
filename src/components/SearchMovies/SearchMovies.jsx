@@ -27,29 +27,27 @@ const SearchMovies = ({ onSubmit, loading }) => {
       //     position: toast.POSITION.BOTTOM_CENTER,
       //   });
     }
-    onSubmit(movieRequest);
+    onSubmit(movieRequest.toLowerCase());
     resetInput();
   };
 
   return (
     <div>
-      <h1>
-        Search Films
-        <form onSubmit={handleSubmit}>
-          <label htmlFor="">
-            <input
-              type="text"
-              placeholder="movie request"
-              name="movieRequest"
-              value={movieRequest}
-              onChange={handleAddQuery}
-            />
-          </label>
-          <button type="submit" disabled={loading}>
-            Search
-          </button>
-        </form>
-      </h1>
+      <h1>Search Films</h1>
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="">
+          <input
+            type="text"
+            placeholder="movie request"
+            name="movieRequest"
+            value={movieRequest}
+            onChange={handleAddQuery}
+          />
+        </label>
+        <button type="submit" disabled={loading}>
+          Search
+        </button>
+      </form>
     </div>
   );
 };

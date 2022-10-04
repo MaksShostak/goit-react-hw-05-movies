@@ -1,19 +1,18 @@
 import { useEffect, useState } from 'react';
 // import PropTypes from 'prop-types';
 import { getTrendingMedia } from 'services/ApiRequests';
-import { NavLink } from 'react-router-dom';
-import { Spiner } from 'components/Spiner/Spiner';
+import { Link, useLocation } from 'react-router-dom';
+import Spiner from 'components/Spiner/Spiner';
 
 const Home = props => {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
-  useEffect(() => {
-    if (movies.length < 0) {
-      return;
-    }
+  const location = useLocation();
+  console.log(location);
 
+  useEffect(() => {
     (async () => {
       try {
         setLoading(true);
@@ -26,7 +25,7 @@ const Home = props => {
         setLoading(false);
       }
     })();
-  }, [movies.length]);
+  }, []);
 
   return (
     <div>
@@ -34,9 +33,11 @@ const Home = props => {
       {loading && <Spiner />}
       {movies.length > 0 && (
         <ul>
-          {movies.map((movie, id) => (
-            <li key={id}>
-              <NavLink to="/movies">{movie.title || movie.name} </NavLink>
+          {movies.map(movie => (
+            <li key={movie.id}>
+              <Link to={`/movies/${movie.id}`} state={{ from: location }}>
+                {movie.title || movie.name}{' '}
+              </Link>
             </li>
           ))}
         </ul>
