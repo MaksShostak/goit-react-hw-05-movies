@@ -33,9 +33,9 @@ export async function getSearchMovies(searchParam) {
 
 export async function getAllInfoMovies(movieId) {
   const { data } = await axios.get(`/movie/${movieId}`, {
-    params: {
-      movie_id: movieId,
-    },
+    // params: {
+    //   movie_id: movieId,
+    // },
   });
   // console.log(data);
   return data;
@@ -43,9 +43,9 @@ export async function getAllInfoMovies(movieId) {
 
 export async function getMoviesActorsCast(movieId) {
   const { data } = await axios.get(`/movie/${movieId}/credits`, {
-    params: {
-      movie_id: movieId,
-    },
+    // params: {
+    //   movie_id: movieId,
+    // },
   });
   // console.log(data.cast);
   return data.cast;
@@ -53,20 +53,20 @@ export async function getMoviesActorsCast(movieId) {
 
 export async function getMoviesReview(movieId) {
   const { data } = await axios.get(`/movie/${movieId}/reviews`, {
-    params: {
-      movie_id: movieId,
-    },
+    // params: {
+    //   movie_id: movieId,
+    // },
   });
   // console.log(data.results);
   return data.results;
 }
 
-export const useApi = () => {
-  return {
-    getTrendingMedia,
-    getSearchMovies,
-    getAllInfoMovies,
-    getMoviesActorsCast,
-    getMoviesReview,
-  };
-};
+// export const useApi = () => {
+//   return {
+//     getTrendingMedia,
+//     getSearchMovies,
+//     getAllInfoMovies,
+//     getMoviesActorsCast,
+//     getMoviesReview,
+//   };
+// };

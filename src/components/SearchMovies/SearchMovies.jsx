@@ -24,7 +24,7 @@ const SearchMovies = ({ onSubmit, loading }) => {
         clickToClose: true,
       });
     }
-    onSubmit(movieRequest.toLowerCase());
+    onSubmit(movieRequest);
     resetInput();
   };
 

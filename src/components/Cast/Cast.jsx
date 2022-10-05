@@ -40,33 +40,32 @@ const Cast = () => {
       )}
       {cast?.length ? (
         <List>
-          {cast.length &&
-            cast?.map(el => (
-              <Item key={el.id}>
-                <ActorInfo>
-                  {' '}
-                  <Span> Author:</Span> {el.character.toUpperCase()}
-                </ActorInfo>
-                <ActorInfo>
-                  {' '}
-                  <Span>Actor name:</Span> {el.name}
-                </ActorInfo>
-                <ActorInfo>
-                  {el.profile_path ? (
-                    <img
-                      src={`http://image.tmdb.org/t/p/w185${el.profile_path}`}
-                      alt=""
-                    />
-                  ) : (
-                    <img
-                      src="https://www.drupal.org/files/project-images/broken-image.jpg"
-                      alt=""
-                      width={185}
-                    />
-                  )}
-                </ActorInfo>
-              </Item>
-            ))}
+          {cast?.map(el => (
+            <Item key={el.id}>
+              <ActorInfo>
+                {' '}
+                <Span> Author:</Span> {el.character.toUpperCase()}
+              </ActorInfo>
+              <ActorInfo>
+                {' '}
+                <Span>Actor name:</Span> {el.name}
+              </ActorInfo>
+              <ActorInfo>
+                {el.profile_path ? (
+                  <img
+                    src={`http://image.tmdb.org/t/p/w185${el.profile_path}`}
+                    alt=""
+                  />
+                ) : (
+                  <img
+                    src="https://www.drupal.org/files/project-images/broken-image.jpg"
+                    alt=""
+                    width={185}
+                  />
+                )}
+              </ActorInfo>
+            </Item>
+          ))}
         </List>
       ) : (
         <p>We don't have any cast information for this movie</p>

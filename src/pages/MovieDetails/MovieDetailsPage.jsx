@@ -43,10 +43,6 @@ const MovieDetails = () => {
     }
   }, [movieId]);
 
-  if (!selectMovie) {
-    return null;
-  }
-
   const {
     title,
     name,
