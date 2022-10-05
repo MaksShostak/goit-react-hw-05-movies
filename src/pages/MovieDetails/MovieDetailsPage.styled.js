@@ -67,6 +67,7 @@ export const MovieInfo = styled.p`
 export const Link = styled(NavLink)`
   display: block;
   text-decoration: none;
+  color: black;
   padding: 5px 20px;
   margin-bottom: 20px;
   font-weight: 700;
@@ -77,6 +78,6 @@ export const Link = styled(NavLink)`
   }
   :hover:not(.active),
   :focus-visible:not(.active) {
-    color: darkcyan;
+    color: rgb(223, 189, 52);
   }
 `;
