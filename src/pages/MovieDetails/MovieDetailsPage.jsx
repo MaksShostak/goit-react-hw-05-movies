@@ -42,7 +42,9 @@ const MovieDetails = () => {
       })();
     }
   }, [movieId]);
-
+  if (!selectMovie) {
+    return null;
+  }
   const {
     title,
     name,
@@ -71,36 +73,31 @@ const MovieDetails = () => {
           <IoArrowBackSharp /> Go back
         </Button>
       </ButtonLink> */}
-      {selectMovie && (
-        <ContainerMovie>
-          <img src={imageUrl} alt={`${title || name} movie poster `} />
-          <ul>
-            <Tittle>{title || name}</Tittle>
-            <MovieItem>
-              User score:
-              <MovieInfo>
-                {Math.round((vote_average / 10) * 100)}&#37;
-              </MovieInfo>
-            </MovieItem>
-            <MovieItem>
-              Overview :<MovieInfo> {overview} </MovieInfo>
-            </MovieItem>
 
-            <MovieItem>
-              Relize date:
-              <MovieInfo> {release_date || first_air_date}</MovieInfo>
-            </MovieItem>
+      <ContainerMovie>
+        <img src={imageUrl} alt={`${title || name} movie poster `} />
+        <ul>
+          <Tittle>{title || name}</Tittle>
+          <MovieItem>
+            User score:
+            <MovieInfo>{Math.round((vote_average / 10) * 100)}&#37;</MovieInfo>
+          </MovieItem>
+          <MovieItem>
+            Overview :<MovieInfo> {overview} </MovieInfo>
+          </MovieItem>
 
-            <MovieItem>
-              Genres :
-              <MovieInfo>
-                {' '}
-                {genres.map(genre => genre.name).join(',')}
-              </MovieInfo>
-            </MovieItem>
-          </ul>
-        </ContainerMovie>
-      )}
+          <MovieItem>
+            Relize date:
+            <MovieInfo> {release_date || first_air_date}</MovieInfo>
+          </MovieItem>
+
+          <MovieItem>
+            Genres :
+            <MovieInfo> {genres.map(genre => genre.name).join(',')}</MovieInfo>
+          </MovieItem>
+        </ul>
+      </ContainerMovie>
+
       <Container>
         <Tittle>Additional Information</Tittle>
         <ul>
